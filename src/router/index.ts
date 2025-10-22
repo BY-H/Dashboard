@@ -64,6 +64,35 @@ export const constantRoutes: RouteRecordRaw[] = [
     ]
   },
   {
+    path: "/kpi-dashboard",
+    component: Layouts,
+    redirect: "/kpi-dashboard/dashboard1",
+    meta: {
+      title: "KPI 看板",
+      elIcon: "DataAnalysis"
+    },
+    children: [
+      {
+        path: "dashboard1",
+        component: () => import("@/pages/kpi-dashboard/index.vue"),
+        name: "KPIDashboard1",
+        meta: {
+          title: "KPI 看板 1",
+          keepAlive: true
+        }
+      },
+      {
+        path: "dashboard2",
+        component: () => import("@/pages/kpi-dashboard/index.vue"),
+        name: "KPIDashboard2",
+        meta: {
+          title: "KPI 看板 2",
+          keepAlive: true
+        }
+      }
+    ]
+  },
+  {
     path: "/demo",
     component: Layouts,
     redirect: "/demo/unocss",
