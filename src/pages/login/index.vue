@@ -58,6 +58,8 @@ function handleLogin() {
     loading.value = true
     loginApi(loginFormData).then(({ data }) => {
       userStore.setToken(data.token)
+      // 测试用，赋予路由权限点
+      userStore.setPermissions(["router:permission", "router:system"])
       router.push(route.query.redirect ? decodeURIComponent(route.query.redirect as string) : "/")
     }).catch(() => {
       createCode()

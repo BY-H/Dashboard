@@ -11,6 +11,8 @@ export const useUserStore = defineStore("user", () => {
 
   const roles = ref<string[]>([])
 
+  const permissions = ref<string[]>([])
+
   const username = ref<string>("")
 
   const tagsViewStore = useTagsViewStore()
@@ -21,6 +23,10 @@ export const useUserStore = defineStore("user", () => {
   const setToken = (value: string) => {
     _setToken(value)
     token.value = value
+  }
+
+  const setPermissions = (value: string[]) => {
+    permissions.value = value
   }
 
   // 获取用户详情
@@ -64,7 +70,7 @@ export const useUserStore = defineStore("user", () => {
     }
   }
 
-  return { token, roles, username, setToken, getInfo, changeRoles, logout, resetToken }
+  return { token, roles, permissions, username, setToken, getInfo, changeRoles, logout, resetToken, setPermissions }
 })
 
 /**

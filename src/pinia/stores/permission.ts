@@ -3,10 +3,14 @@ import { pinia } from "@/pinia"
 import { constantRoutes, dynamicRoutes } from "@/router"
 import { routerConfig } from "@/router/config"
 import { flatMultiLevelRoutes } from "@/router/helper"
+import { useUserStore } from "./user"
 
 function hasPermission(roles: string[], route: RouteRecordRaw) {
   const routeRoles = route.meta?.roles
-  return routeRoles ? roles.some(role => routeRoles.includes(role)) : true
+  const roleRoutes = routeRoles ? roles.some(role => routeRoles.includes(role)) : true
+  const routePermission = route.meta?.permission
+  const permissionRoutes = routePermission ? useUserStore().permissions.includes(routePermission) : true
+  return roleRoutes && permissionRoutes
 }
 
 function filterDynamicRoutes(routes: RouteRecordRaw[], roles: string[]) {

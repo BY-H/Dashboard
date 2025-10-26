@@ -252,6 +252,29 @@ export const dynamicRoutes: RouteRecordRaw[] = [
         }
       }
     ]
+  },
+  {
+    path: "/system",
+    component: Layouts,
+    redirect: "/system/permission",
+    name: "system",
+    meta: {
+      title: "系统设置",
+      elIcon: "Unlock",
+      alwaysShow: true,
+      permission: "router:system"
+    },
+    children: [
+      {
+        path: "permission",
+        component: () => import("@/pages/permission/index.vue"),
+        name: "SystemPermission",
+        meta: {
+          title: "权限管理",
+          permission: "router:permission"
+        }
+      }
+    ]
   }
 ]
 
