@@ -22,7 +22,6 @@ const points = ref([
 
     <!-- 芯片电路 -->
     <svg class="circuit-svg" viewBox="0 0 800 800">
-      <circle class="energy-ring" cx="400" cy="400" r="190" />
       <rect x="320" y="320" width="160" height="160" rx="12" class="chip-core" />
 
       <g class="circuit-lines" stroke="#00bcd4" stroke-width="2" fill="none">
